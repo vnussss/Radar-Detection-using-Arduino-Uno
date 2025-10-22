@@ -1,0 +1,45 @@
+/* Radar animation */
+.radar-circle {
+    width: 90%;
+    height: 90%;
+}
+
+.radar-sweep {
+    animation: sweep 4s linear infinite;
+}
+
+.sweep {
+    animation: sweep 4s linear infinite;
+}
+
+@keyframes sweep {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4f46e5;
+    border-radius: 4px;
+}
+
+/* Component transitions */
+.bg-gray-800 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-gray-800:hover {
+    transform: translateY(-4px);
+}

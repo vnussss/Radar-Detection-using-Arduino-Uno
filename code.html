@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Source Code </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-600">
+            Project Source Code
+        </h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-gray-800 rounded-xl p-6">
+                <h2 class="text-2xl font-bold mb-4 text-indigo-300 flex items-center">
+                    <i data-feather="file-text" class="mr-2"></i> Arduino Sketch
+                </h2>
+                <pre class="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm font-mono">
+<code class="text-gray-300">#include &lt;Servo.h&gt;
+
+#define TRIG_PIN 9
+#define ECHO_PIN 10
+#define SERVO_PIN 11
+#define BUZZER_PIN 8
+#define LED_GREEN 2
+#define LED_YELLOW 3
+#define LED_RED 4
+
+Servo radarServo;
+int angle = 0;
+int direction = 1; // 1 for clockwise, -1 for counter-clockwise
+
+void setup() {
+    pinMode(TRIG_PIN, OUTPUT);
+    pinMode(ECHO_PIN, INPUT);
+    pinMode(BUZZER_PIN, OUTPUT);
+    pinMode(LED_GREEN, OUTPUT);
+    pinMode(LED_YELLOW, OUTPUT);
+    pinMode(LED_RED, OUTPUT);
+    
+    radarServo.attach(SERVO_PIN);
+    Serial.begin(9600);
+}
+
+void loop() {
+    // Move servo
+    radarServo.write(angle);
+    
+    // Get distance
+    long duration, distance;
+    digitalWrite(TRIG_PIN, LOW);
+    delayMicroseconds(2);
+    digitalWrite(TRIG_PIN, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(TRIG_PIN, LOW);
+    
+    duration = pulseIn(ECHO_PIN, HIGH);
+    distance = duration * 0.034 / 2;
+    
+    // Control LEDs and buzzer based on distance
+    controlIndicators(distance);
+    
+    // Send data to serial
+    Serial.print(angle);
+    Serial.print(",");
+    Serial.print(distance);
+    Serial.println();
+    
+    // Change servo direction at limits
+    angle += direction * 5;
+    if (angle >= 180 || angle <= 0) {
+        direction *= -1;
+    }
+    
+    delay(50);
+}
+
+void controlIndicators(int distance) {
+    // Reset all indicators
+    digitalWrite(LED_GREEN, LOW);
+    digitalWrite(LED_YELLOW, LOW);
+    digitalWrite(LED_RED, LOW);
+    noTone(BUZZER_PIN);
+    
+    if (distance > 60) {
+        digitalWrite(LED_GREEN, HIGH);
+    } 
+    else if (distance > 30) {
+        digitalWrite(LED_YELLOW, HIGH);
+        tone(BUZZER_PIN, 1000, 100);
+    } 
+    else if (distance > 0) {
+        digitalWrite(LED_RED, HIGH);
+        tone(BUZZER_PIN, 2000, 200);
+    }
+}</code></pre>
+            </div>
+            
+            <div class="bg-gray-800 rounded-xl p-6">
+                <h2 class="text-2xl font-bold mb-4 text-purple-300 flex items-center">
+                    <i data-feather="code" class="mr-2"></i> Python Flask Server
+                </h2>
+                <pre class="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm font-mono">
+<code class="text-gray-300">from flask import Flask, render_template, jsonify
+from flask_socketio import SocketIO, emit
+import serial
+import threading
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret!'
+socketio = SocketIO(app)
+
+# Configure serial port (adjust COM port as needed)
+ser = serial.Serial('COM3', 9600, timeout=1)
+
+def read_serial():
+    while True:
+        if ser.in_waiting > 0:
+            line = ser.readline().decode('utf-8').strip()
+            if ',' in line:
+                angle, distance = line.split(',')
+                try:
+                    data = {
+                        'angle': int(angle),
+                        'distance': int(distance)
+                    }
+                    socketio.emit('radar_data', data)
+                except ValueError:
+                    pass
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/data')
+def get_data():
+    return jsonify({'status': 'active'})
+
+@socketio.on('connect')
+def handle_connect():
+    print('Client connected')
+
+if __name__ == '__main__':
+    # Start serial reading in a separate thread
+    threading.Thread(target=read_serial, daemon=True).start()
+    socketio.run(app, debug=True)</code></pre>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-xl p-6">
+            <h2 class="text-2xl font-bold mb-4 text-blue-300 flex items-center">
+                <i data-feather="download" class="mr-2"></i> Installation Guide
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-gray-700/50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-green-300 mb-2">1. Arduino Setup</h3>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-300">
+                        <li>Install Arduino IDE from <a href="https://www.arduino.cc/en/software" class="text-blue-400 hover:underline">arduino.cc</a></li>
+                        <li>Connect Arduino UNO via USB</li>
+                        <li>Install required libraries: Servo.h (built-in)</li>
+                        <li>Upload the radar sketch to your Arduino</li>
+                    </ol>
+                </div>
+                
+                <div class="bg-gray-700/50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-yellow-300 mb-2">2. Python Requirements</h3>
+                    <pre class="bg-gray-900 p-3 rounded text-sm font-mono">pip install flask flask-socketio pyserial</pre>
+                    <p class="text-gray-300 mt-2">Run the Flask server with:</p>
+                    <pre class="bg-gray-900 p-3 rounded text-sm font-mono">python app.py</pre>
+                </div>
+                
+                <div class="bg-gray-700/50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-red-300 mb-2">3. Hardware Connections</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Connect HC-SR04 Trig to D9 and Echo to D10</li>
+                        <li>Connect servo signal to D11 (power to 5V, GND to GND)</li>
+                        <li>Connect buzzer to D8</li>
+                        <li>Connect LEDs to D2 (green), D3 (yellow), D4 (red) with 220Ω resistors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

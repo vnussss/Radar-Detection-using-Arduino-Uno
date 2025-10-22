@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About |Radar detection system</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <custom-navbar></custom-navbar>
+    
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-600">
+            About The Project
+        </h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 text-indigo-300">Project Vision</h2>
+                <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                    Ultrasonic Radar detection system is an innovative radar detection system that combines affordable hardware with modern web technologies to create a powerful monitoring solution. Our goal was to make radar technology accessible for education, home security, and industrial applications.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-indigo-500/20 p-2 rounded-lg mr-4">
+                            <i data-feather="target" class="text-indigo-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Precision Monitoring</h3>
+                            <p class="text-gray-400">Accurate distance measurement up to 4 meters with 180° coverage</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-purple-500/20 p-2 rounded-lg mr-4">
+                            <i data-feather="globe" class="text-purple-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Real-time Web Interface</h3>
+                            <p class="text-gray-400">Visualize radar data from anywhere using Flask web server</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-pink-500/20 p-2 rounded-lg mr-4">
+                            <i data-feather="dollar-sign" class="text-pink-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Affordable Solution</h3>
+                            <p class="text-gray-400">Under $30 total hardware cost using common components</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-800 rounded-xl p-6 shadow-xl h-full">
+                <img src="data:image/jpeg;base64,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" alt="Radar System" class="w-full h-auto rounded-lg">
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-xl p-8 mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-purple-300">Technical Specifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-700/50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center text-indigo-300">Arduino UNO</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="cpu" class="mr-2 w-5 h-5 text-blue-400"></i>
+                            <span>ATmega328P Microcontroller</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="zap" class="mr-2 w-5 h-5 text-yellow-400"></i>
+                            <span>5V Operating Voltage</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="clock" class="mr-2 w-5 h-5 text-green-400"></i>
+                            <span>16MHz Clock Speed</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="memory" class="mr-2 w-5 h-5 text-purple-400"></i>
+                            <span>32KB Flash Memory</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gray-700/50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center text-pink-300">HC-SR04 Sensor</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="maximize-2" class="mr-2 w-5 h-5 text-red-400"></i>
+                            <span>2cm - 400cm Range</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="crosshair" class="mr-2 w-5 h-5 text-blue-400"></i>
+                            <span>3mm Accuracy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="activity" class="mr-2 w-5 h-5 text-green-400"></i>
+                            <span>40kHz Ultrasonic Frequency</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="power" class="mr-2 w-5 h-5 text-purple-400"></i>
+                            <span>5V DC, 15mA Current</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gray-700/50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4 text-center text-blue-300">System Performance</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i data-feather="refresh-cw" class="mr-2 w-5 h-5 text-indigo-400"></i>
+                            <span>Full 180° scan in ~3.6 seconds</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="bar-chart-2" class="mr-2 w-5 h-5 text-yellow-400"></i>
+                            <span>5° Angular Resolution</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="wifi" class="mr-2 w-5 h-5 text-green-400"></i>
+                            <span>Serial communication @ 9600 baud</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="eye" class="mr-2 w-5 h-5 text-red-400"></i>
+                            <span>Web UI updates at 10Hz</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold mb-8 text-center text-pink-300">Potential Applications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="bg-indigo-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="home" class="text-indigo-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-indigo-300">Home Security</h3>
+                    <p class="text-gray-400">Detect intruders or monitor restricted areas with visual and audible alerts.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="bg-purple-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="car" class="text-purple-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-purple-300">Parking Assistance</h3>
+                    <p class="text-gray-400">Help drivers gauge distance to obstacles when parking in tight spaces.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="bg-pink-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="book" class="text-pink-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-pink-300">Education</h3>
+                    <p class="text-gray-400">Teach students about radar technology, Arduino programming, and IoT concepts.</p>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                    <div class="bg-blue-500/20 w-12 h-12 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="package" class="text-blue-300"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-blue-300">Industrial</h3>
+                    <p class="text-gray-400">Monitor object presence in manufacturing lines or warehouse automation.</p>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
