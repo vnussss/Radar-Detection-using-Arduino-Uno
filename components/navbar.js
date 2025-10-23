@@ -70,20 +70,20 @@ class CustomNavbar extends HTMLElement {
         }
       </style>
       <nav>
-        <a href="/" class="logo">
-          <i data-feather="eye" class="logo-icon"></i>
-          <span>Ultrasonic Sentinel</span>
-        </a>
-        <button class="mobile-menu-btn">
-          <i data-feather="menu"></i>
-        </button>
-        <ul>
-          <li><a href="/" class="active"><i data-feather="home"></i> Home</a></li>
-          <li><a href="/code.html"><i data-feather="code"></i> Source Code</a></li>
-          <li><a href="/about.html"><i data-feather="info"></i> About</a></li>
-          <li><a href="https://github.com/arduino-radar-project" target="_blank"><i data-feather="github"></i> GitHub</a></li>
-        </ul>
-      </nav>
+  <a href="index.html" class="logo">
+    <i data-feather="eye" class="logo-icon"></i>
+    <span>Ultrasonic Sentinel</span>
+  </a>
+  <button class="mobile-menu-btn">
+    <i data-feather="menu"></i>
+  </button>
+  <ul>
+    <li><a href="index.html" class="active"><i data-feather="home"></i> Home</a></li>
+    <li><a href="code.html"><i data-feather="code"></i> Source Code</a></li>
+    <li><a href="about.html"><i data-feather="info"></i> About</a></li>
+    <li><a href="https://github.com/arduino-radar-project" target="_blank"><i data-feather="github"></i> GitHub</a></li>
+  </ul>
+</nav>
     `;
   }
 }
