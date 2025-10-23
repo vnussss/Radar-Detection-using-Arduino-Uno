@@ -81,8 +81,10 @@ class CustomNavbar extends HTMLElement {
     <li><a href="index.html" class="active"><i data-feather="home"></i> Home</a></li>
     <li><a href="code.html">Source Code</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="https://github.com/arduino-radar-project" target="_blank"><i data-feather="github"></i> GitHub</a></li>
-  </ul>
+    <li><a href="Radar-Detection-using-Arduino-Uno/code.html">Source Code</a></li>
+<li><a href="Radar-Detection-using-Arduino-Uno/about.html">About</a></li>
+<li><a href="Radar-Detection-using-Arduino-Uno/index.html" class="active">Home</a></li>
+
 </nav>
     `;
   }
